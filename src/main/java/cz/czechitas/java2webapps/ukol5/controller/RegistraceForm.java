@@ -22,4 +22,68 @@ public class RegistraceForm {
     @Email
     private String email;
     private Integer telefon;
+
+    public String getJmeno() {
+        return jmeno;
+    }
+
+    public void setJmeno(String jmeno) {
+        this.jmeno = jmeno;
+    }
+
+    public String getPrijmeni() {
+        return prijmeni;
+    }
+
+    public void setPrijmeni(String prijmeni) {
+        this.prijmeni = prijmeni;
+    }
+
+    public DateTimeFormatter getDatumNarozeni() {
+        return datumNarozeni;
+    }
+
+    public void setDatumNarozeni(DateTimeFormatter datumNarozeni) {
+        this.datumNarozeni = datumNarozeni;
+    }
+
+    public Pohlavi getPohlavi() {
+        return pohlavi;
+    }
+
+    public void setPohlavi(Pohlavi pohlavi) {
+        this.pohlavi = pohlavi;
+    }
+
+    public Sport getSport() {
+        return sport;
+    }
+
+    public void setSport(Sport sport) {
+        this.sport = sport;
+    }
+
+    public Turnus getTurnus() {
+        return turnus;
+    }
+
+    public void setTurnus(Turnus turnus) {
+        this.turnus = turnus;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public Integer getTelefon() {
+        return telefon;
+    }
+
+    public void setTelefon(Integer telefon) {
+        this.telefon = telefon;
+    }
 }
