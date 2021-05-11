@@ -1,27 +1,39 @@
 package cz.czechitas.java2webapps.ukol5.controller;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
+import java.time.LocalDate;
+import java.time.Period;
 import java.time.format.DateTimeFormatter;
+import java.util.Date;
+import java.util.EnumSet;
+
+
 
 public class RegistraceForm {
     @NotBlank
     private String jmeno;
     @NotBlank
     private String prijmeni;
-    @NotEmpty
-    private DateTimeFormatter datumNarozeni;
+
+    @DateTimeFormat
+    @NotNull
+    private String datumNarozeni;
     @NotNull
     private Pohlavi pohlavi;
     @NotNull
-    private Sport sport;
+    private EnumSet<Sport> sport;
     @NotNull
     private Turnus turnus;
     @Email
     private String email;
-    private Integer telefon;
+
+    private String telefon;
+
 
     public String getJmeno() {
         return jmeno;
@@ -39,11 +51,20 @@ public class RegistraceForm {
         this.prijmeni = prijmeni;
     }
 
-    public DateTimeFormatter getDatumNarozeni() {
+    public String getDatumNarozeni() {
         return datumNarozeni;
     }
 
-    public void setDatumNarozeni(DateTimeFormatter datumNarozeni) {
+    public int vypocetVeku() {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        LocalDate birthDate = LocalDate.parse(datumNarozeni, formatter);
+        Period period = birthDate.until(LocalDate.now());
+        int vek = period.getYears();
+        return vek;
+    }
+
+
+    public void setDatumNarozeni(String datumNarozeni) {
         this.datumNarozeni = datumNarozeni;
     }
 
@@ -55,11 +76,11 @@ public class RegistraceForm {
         this.pohlavi = pohlavi;
     }
 
-    public Sport getSport() {
+    public EnumSet<Sport> getSport() {
         return sport;
     }
 
-    public void setSport(Sport sport) {
+    public void setSport(EnumSet<Sport> sport) {
         this.sport = sport;
     }
 
@@ -79,11 +100,13 @@ public class RegistraceForm {
         this.email = email;
     }
 
-    public Integer getTelefon() {
+    public String getTelefon() {
         return telefon;
     }
 
-    public void setTelefon(Integer telefon) {
-        this.telefon = telefon;
+    public void setTelefon(String telefon) {
+        this.telefon =  telefon;
     }
+
+
 }
